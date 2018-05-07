@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d108ad4c-1276-4443-8fe6-03fa9ccbb3e2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/constist/DouBan.java" afterPath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/consist/DouBan.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/constist/Save.java" afterPath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/consist/Save.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/constist/VX.java" afterPath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/consist/VX.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/database/impl/CrawlerDouBan.java" afterPath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/database/impl/CrawlerDouBan.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/service/MessageFileImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/service/MessageFileImpl.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/service/MessageVXImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/service/MessageVXImpl.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/service/PushService.java" afterPath="$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/service/PushService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -19,12 +25,11 @@
       <file leaf-file-name="PushService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/service/PushService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="105" column="49" lean-forward="false" selection-start-line="105" selection-start-column="49" selection-end-line="105" selection-end-column="49" />
+            <state relative-caret-position="-140">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3299#3300#0" expanded="true" />
-                <element signature="e#3355#3356#0" expanded="true" />
+                <element signature="e#3247#3248#0" expanded="true" />
+                <element signature="e#3303#3304#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -73,7 +78,7 @@
         </entry>
       </file>
       <file leaf-file-name="DouBan.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/constist/DouBan.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/consist/DouBan.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="880">
               <caret line="44" column="56" lean-forward="false" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="56" />
@@ -180,7 +185,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -479,15 +484,15 @@
       <option name="presentableId" value="Default" />
       <updated>1525258038471</updated>
       <workItem from="1525258040300" duration="40432000" />
-      <workItem from="1525601635434" duration="2507000" />
+      <workItem from="1525601635434" duration="3156000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42939000" />
+    <option name="totallyTimeSpent" value="43588000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -503,7 +508,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -536,9 +541,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3299#3300#0" expanded="true" />
-            <element signature="e#3355#3356#0" expanded="true" />
+            <element signature="e#3247#3248#0" expanded="true" />
+            <element signature="e#3303#3304#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -569,7 +573,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/constist/DouBan.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/consist/DouBan.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="880">
           <caret line="44" column="56" lean-forward="false" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="56" />
@@ -665,7 +669,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/constist/Save.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/consist/Save.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="44" lean-forward="false" selection-start-line="0" selection-start-column="44" selection-end-line="0" selection-end-column="44" />
@@ -683,7 +687,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/constist/VX.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/consist/VX.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="19" column="65" lean-forward="false" selection-start-line="19" selection-start-column="56" selection-end-line="19" selection-end-column="65" />
@@ -731,7 +735,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/constist/DouBan.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/consist/DouBan.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="880">
           <caret line="44" column="56" lean-forward="false" selection-start-line="44" selection-start-column="51" selection-end-line="44" selection-end-column="56" />
@@ -809,12 +813,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/dengchengchao/tenement/service/PushService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="105" column="49" lean-forward="false" selection-start-line="105" selection-start-column="49" selection-end-line="105" selection-end-column="49" />
+        <state relative-caret-position="-140">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3299#3300#0" expanded="true" />
-            <element signature="e#3355#3356#0" expanded="true" />
+            <element signature="e#3247#3248#0" expanded="true" />
+            <element signature="e#3303#3304#0" expanded="true" />
           </folding>
         </state>
       </provider>

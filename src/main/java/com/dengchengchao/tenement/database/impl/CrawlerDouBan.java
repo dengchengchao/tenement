@@ -1,5 +1,5 @@
 package com.dengchengchao.tenement.database.impl;
-import com.dengchengchao.tenement.constist.DouBan;
+import com.dengchengchao.tenement.consist.DouBan;
 import com.dengchengchao.tenement.database.Crawler;
 import com.dengchengchao.tenement.domain.CrawInfo;
 import com.dengchengchao.tenement.utils.HttpClientUtils;

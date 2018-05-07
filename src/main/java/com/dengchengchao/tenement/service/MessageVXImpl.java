@@ -1,7 +1,7 @@
 package com.dengchengchao.tenement.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.dengchengchao.tenement.constist.VX;
+import com.dengchengchao.tenement.consist.VX;
 import com.dengchengchao.tenement.utils.HttpClientUtils;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;

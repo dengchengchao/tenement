@@ -1,6 +1,6 @@
 package com.dengchengchao.tenement.service;
 
-import com.dengchengchao.tenement.constist.Save;
+import com.dengchengchao.tenement.consist.Save;
 import com.dengchengchao.tenement.database.Crawler;
 import com.dengchengchao.tenement.database.impl.CrawlerDouBan;
 import com.dengchengchao.tenement.domain.CrawInfo;
@@ -10,9 +10,6 @@ import com.dengchengchao.tenement.utils.ProUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import java.io.File;
-import java.text.DateFormat;
 import java.util.*;
 
 

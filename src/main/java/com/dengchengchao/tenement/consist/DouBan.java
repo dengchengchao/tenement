@@ -1,4 +1,4 @@
-package com.dengchengchao.tenement.constist;
+package com.dengchengchao.tenement.consist;
 
 /**
  * @Author dengchengchao

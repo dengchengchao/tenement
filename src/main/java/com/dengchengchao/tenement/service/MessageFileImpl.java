@@ -1,6 +1,6 @@
 package com.dengchengchao.tenement.service;
 
-import com.dengchengchao.tenement.constist.Save;
+import com.dengchengchao.tenement.consist.Save;
 import com.dengchengchao.tenement.utils.FileUtils;
 
 import java.io.File;
