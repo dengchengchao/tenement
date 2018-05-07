@@ -2,7 +2,9 @@ package com.dengchengchao.tenement.service;
 
 import com.dengchengchao.tenement.consist.Save;
 import com.dengchengchao.tenement.database.Crawler;
+import com.dengchengchao.tenement.database.HistoricalData;
 import com.dengchengchao.tenement.database.impl.CrawlerDouBan;
+import com.dengchengchao.tenement.database.impl.HistoricalDataFileImpl;
 import com.dengchengchao.tenement.domain.CrawInfo;
 import com.dengchengchao.tenement.utils.FileUtils;
 import com.dengchengchao.tenement.utils.LogUtils;
@@ -21,13 +23,27 @@ import java.util.*;
 public class PushService extends Thread {
 
     /**
-     * 记录已经推送了的消息，以Crawler的title为key.
+     * 记录已经推送了的消息，记录在本地文件中，方便下次启动服务器继续过滤文件.
      */
-    private Map<String, Crawler> sendForwardCrawler = new HashMap<>();
+    private HistoricalData historicalData = new HistoricalDataFileImpl();
 
+
+    /**
+     * 记录已经推送了的消息，记录在内存中，方便快速查询.
+     */
+    private List<String> sendForwardCrawler = historicalData.getHistoricalData();
+
+
+    /**
+     * 爬虫组件
+     */
     private Crawler crawler = new CrawlerDouBan();
 
-    private Message message=new MessageFileImpl();
+    /**
+     * 消息推送组件
+     */
+    private Message message=new MessageHtmlFileImpl();
+
     static {
         FileUtils.makeDir(Save.DIR_NAME);
     }
@@ -50,9 +66,11 @@ public class PushService extends Thread {
             for (CrawInfo crawInfo : crawInfos) {
                 //符合制定规则的 && 以前没有推送过的
                 if (isValidCrawlerInfo(keywords, crawInfo.getTitle()) &&
-                        !sendForwardCrawler.containsKey(crawInfo.getTitle())) {
+                        !sendForwardCrawler.contains(crawInfo.getTitle())) {
 
-                    sendForwardCrawler.put(crawInfo.getTitle(), crawler);
+                    sendForwardCrawler.add(crawInfo.getTitle());
+                    historicalData.setHistoricalData(crawInfo.getTitle());
+
                     sendMessage(crawInfo);
                     logger.info(crawInfo.toString());
                 }

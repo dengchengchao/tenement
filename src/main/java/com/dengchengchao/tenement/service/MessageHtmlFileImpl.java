@@ -12,13 +12,14 @@ import java.util.Date;
  * @Time 2018/5/7
  * @Description
  */
-public class MessageFileImpl implements Message {
+public class MessageHtmlFileImpl implements Message {
+
 
     @Override
     public boolean send(String message) {
         DateFormat dateFormat = DateFormat.getDateInstance();
         String path = Save.DIR_NAME + File.separator + dateFormat.format(new Date()) + ".txt";
         FileUtils.write(path, message);
-        return  true;
+        return true;
     }
 }

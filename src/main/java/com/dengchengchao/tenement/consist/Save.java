@@ -12,4 +12,6 @@ import java.io.File;
 public class Save {
 
     public  static final String DIR_NAME= ProUtils.get("writer.dirpath")+ File.separator+ "tenement";
+
+    public  static final String DIR_NAME_HISTORY=DIR_NAME+File.separator+"history.txt";
 }
