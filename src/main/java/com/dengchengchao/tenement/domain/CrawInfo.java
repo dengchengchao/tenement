@@ -27,7 +27,7 @@ public class CrawInfo {
 
 
     public String toString(){
-        return String.format("<a href=\"%s\">%s</a> +<br/>",url,title);
+        return String.format("<p><a href=\"%s\" target=\"_blank\">%s</a></p><br/>",url,title);
     }
 
     public String getUrl() {
