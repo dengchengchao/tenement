@@ -30,6 +30,7 @@ public class PushService extends Thread {
 
     private Crawler crawler = new CrawlerDouBan();
 
+    private Message message=new MessageFileImpl();
     static {
         FileUtils.makeDir(Save.DIR_NAME);
     }
@@ -102,9 +103,7 @@ public class PushService extends Thread {
      * 保存信息
      */
     private void sendMessage(CrawInfo crawInfo) {
-        DateFormat dateFormat = DateFormat.getDateInstance();
-        String path = Save.DIR_NAME + File.separator + dateFormat.format(new Date()) + ".txt";
-        FileUtils.write(path, crawInfo.toString()+"\r\n");
+        message.send(crawInfo.toString()+"\r\n");
     }
 
 
