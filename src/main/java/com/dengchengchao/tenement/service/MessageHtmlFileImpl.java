@@ -18,7 +18,7 @@ public class MessageHtmlFileImpl implements Message {
     @Override
     public boolean send(String message) {
         DateFormat dateFormat = DateFormat.getDateInstance();
-        String path = Save.DIR_NAME + File.separator + dateFormat.format(new Date()) + ".txt";
+        String path = Save.DIR_NAME + File.separator + dateFormat.format(new Date()) + Save.SVAE_POSTFIX;
         FileUtils.write(path, message);
         return true;
     }

@@ -43,4 +43,12 @@ public class DouBan {
      * 正则表达是 捕获time
      */
     public static final String REGEX_TIME = "<span class=\"color-green\">(.*?)</span>";
+
+
+    /**
+     * 豆瓣API url
+     */
+    public static String getDouBanAPIUrl(String topicId) {
+        return String.format("https://api.douban.com/v2/group/%s/topics", topicId);
+    }
 }

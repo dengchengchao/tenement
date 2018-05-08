@@ -1,8 +1,6 @@
 package com.dengchengchao.tenement.utils;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
+import org.apache.http.*;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -10,9 +8,13 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
+
 import java.io.File;
 import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -22,6 +24,7 @@ import java.util.List;
  * @Description
  */
 public class HttpClientUtils {
+
 
     /**
      * 发送post请求--用于接口接收的参数为JSON字符串
@@ -90,15 +93,14 @@ public class HttpClientUtils {
             HttpResponse response = httpClient.execute(httpGet);
 
             //if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-                result = EntityUtils.toString(response.getEntity());
-           // }
+            result = EntityUtils.toString(response.getEntity());
+            // }
             httpClient.close();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
         return result;
     }
-
 
 
 }

@@ -1,5 +1,7 @@
 package com.dengchengchao.tenement.domain;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  * @Author dengchengchao
  * @Time 2018/5/5
@@ -10,6 +12,7 @@ public class CrawInfo {
     /**
      * 链接
      */
+    @JSONField(name = "share_url")
     private String url;
 
 

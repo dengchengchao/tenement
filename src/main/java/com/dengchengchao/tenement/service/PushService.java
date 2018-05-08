@@ -4,11 +4,13 @@ import com.dengchengchao.tenement.consist.Save;
 import com.dengchengchao.tenement.database.Crawler;
 import com.dengchengchao.tenement.database.HistoricalData;
 import com.dengchengchao.tenement.database.impl.CrawlerDouBan;
+import com.dengchengchao.tenement.database.impl.CrawlerDouBanAPI;
 import com.dengchengchao.tenement.database.impl.HistoricalDataFileImpl;
 import com.dengchengchao.tenement.domain.CrawInfo;
 import com.dengchengchao.tenement.utils.FileUtils;
 import com.dengchengchao.tenement.utils.LogUtils;
 import com.dengchengchao.tenement.utils.ProUtils;
+import com.dengchengchao.tenement.utils.WatiUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +39,7 @@ public class PushService extends Thread {
     /**
      * 爬虫组件
      */
-    private Crawler crawler = new CrawlerDouBan();
+    private Crawler crawler = new CrawlerDouBanAPI();
 
     /**
      * 消息推送组件
@@ -75,7 +77,7 @@ public class PushService extends Thread {
                     logger.info(crawInfo.toString());
                 }
             }
-            wait(ProUtils.get("crawler.interval"));
+            WatiUtils.wait(Integer.valueOf(ProUtils.get("crawler.interval"))*60);
         }
     }
 
@@ -91,16 +93,7 @@ public class PushService extends Thread {
         logger.info(head);
     }
 
-    //等待一定时间再抓取
-    private void wait(String minute) {
-        int interval = Integer.valueOf(minute);
-        try {
-            Thread.sleep(interval * 60 * 1000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
-    }
 
     /**
      * @param semicolonWord 以分号(不区分中英文)隔开的句子

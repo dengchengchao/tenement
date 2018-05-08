@@ -29,6 +29,6 @@ public class HistoricalDataFileImpl implements HistoricalData {
 
     @Override
     public void setHistoricalData(String title) {
-        FileUtils.write(Save.DIR_NAME_HISTORY, title);
+        FileUtils.write(Save.DIR_NAME_HISTORY, title+"\r\n");
     }
 }

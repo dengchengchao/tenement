@@ -1,4 +1,5 @@
 package com.dengchengchao.tenement.database.impl;
+
 import com.dengchengchao.tenement.consist.DouBan;
 import com.dengchengchao.tenement.database.Crawler;
 import com.dengchengchao.tenement.domain.CrawInfo;
@@ -8,7 +9,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,19 +18,28 @@ import java.util.regex.Pattern;
 /**
  * @Author dengchengchao
  * @Time 2018/5/5
- * @Description
+ * @Description 爬虫的方式容易被豆瓣封禁IP,建议使用doubanapi的方式
  */
+@Deprecated
 public class CrawlerDouBan implements Crawler {
 
-    private Logger logger= LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     private static String page = ProUtils.get("douban.pages");
+
 
     public List<CrawInfo> getInfo(List<String> urls) {
         List<CrawInfo> crawInfos = new ArrayList<>();
         for (String url : urls) {
+            //间隔一定的时间，避免爬虫检测
+            try {
+                Thread.sleep(3000);
+            } catch (Exception e) {
+
+            }
+
             int pagePer = Integer.valueOf(page);
             for (int i = 0; i < pagePer; i++) {
-                crawInfos.addAll(getPerPageInfo(url, i*DouBan.PER_INDEX_PAGE));
+                crawInfos.addAll(getPerPageInfo(url, i * DouBan.PER_INDEX_PAGE));
             }
         }
         return crawInfos;
@@ -57,8 +66,8 @@ public class CrawlerDouBan implements Crawler {
 
         List<CrawInfo> crawInfos = new ArrayList<>();
         String content = getTable(response);
-        if (content.isEmpty()){
-            logger.info("网页获取错误: "+response);
+        if (content.isEmpty()) {
+            logger.info("网页获取错误: " + response);
         }
         Matcher matcher = getTableRow(content);
 
@@ -67,8 +76,8 @@ public class CrawlerDouBan implements Crawler {
             String crawlerInfo = matcher.group();
             Pattern p = Pattern.compile(DouBan.REGEX_INFO);
             Matcher m = p.matcher(crawlerInfo);
-            if (m.groupCount()<=0){
-                logger.info("未获取到正确字段："+crawlerInfo);
+            if (m.groupCount() <= 0) {
+                logger.info("未获取到正确字段：" + crawlerInfo);
             }
             while (m.find()) {
                 crawInfos.add(new CrawInfo() {
@@ -94,7 +103,7 @@ public class CrawlerDouBan implements Crawler {
      * 中间的内容
      */
     private String getTable(String response) {
-        if (null==response)return "";
+        if (null == response) return "";
         int endIndex = response.lastIndexOf(DouBan.SUB_TABLE_STR_END);
         int beginIndex = response.indexOf(DouBan.SUB_TABLE_STR_START);
         return endIndex > -1 && beginIndex > -1 ? response.substring(beginIndex, endIndex) : "";
@@ -118,7 +127,7 @@ public class CrawlerDouBan implements Crawler {
 
     /**
      * 发送get请求，抓取文章时间
-     *
+     * <p>
      * 暂时不用，逐个网页请求太浪费时间，使用title过滤即可
      */
     private String getRealTime(String url) {
@@ -127,5 +136,6 @@ public class CrawlerDouBan implements Crawler {
         Matcher m = p.matcher(response);
         return m.find() ? m.group(1) : "";
     }
+
 
 }

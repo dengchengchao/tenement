@@ -15,8 +15,7 @@ public class ProUtils {
 
     static {
         try{
-            String path=ProUtils.class.getResource("/").getPath();
-            proUtils.load(new InputStreamReader(ProUtils.class.getClassLoader().getResourceAsStream("application.properties"),"UTF-8")); //path+"application.properties"));
+            proUtils.load(new InputStreamReader(ProUtils.class.getResourceAsStream("/application.properties"),"UTF-8")); //path+"application.properties"));
         }catch (Exception e){
             e.printStackTrace();
         }

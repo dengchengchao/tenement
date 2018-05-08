@@ -53,8 +53,4 @@ public class MessageVXImpl implements Message {
         };
     }
 
-
-    public static void main(String[] args) {
-        System.out.println(MessageVXImpl.getAccessToken());
-    }
 }
