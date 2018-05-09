@@ -60,7 +60,7 @@ public class PushService extends Thread {
              */
             List<String> urls = StringUtils.semicolonWordToList(ProUtils.get("douban.urls"));
             LogUtils.infoList(logger, urls, "URLS INFO: ");
-            List<CrawInfo> crawInfos = crawler.getInfo(urls);
+
 
 
             /**
@@ -68,6 +68,13 @@ public class PushService extends Thread {
              */
             List<List<String>> keywords = StringUtils.andSymbolWordToList(ProUtils.get("douban.keyword"));
             LogUtils.infoListWithList(logger, keywords, "KEYWORDS INFO: ");
+
+
+            /**
+             * 启动爬虫
+             */
+            List<CrawInfo> crawInfos = crawler.getInfo(urls);
+            logger.info("Crawler Start.........");
             logger.info(String.format("Crawl SIZE:%d", crawInfos.size()));
 
             for (CrawInfo crawInfo : crawInfos) {
@@ -76,9 +83,13 @@ public class PushService extends Thread {
                     if (isValidCrawlerInfo(keywordList, crawInfo.getTitle()) &&
                             !sendForwardCrawler.contains(crawInfo.getTitle())) {
 
+                        //记录到已推送的消息订阅，过滤
                         sendForwardCrawler.add(crawInfo.getTitle());
+
+                        //保存历史记录文件
                         historicalData.setHistoricalData(crawInfo.getTitle());
 
+                        //推送消息到本地
                         sendMessage(crawInfo,keywordList.toString());
                         logger.info(keywordList.toString()+":");
                         logger.info(crawInfo.toString());
@@ -103,7 +114,7 @@ public class PushService extends Thread {
 
 
     /**
-     * 保存信息
+     * 推送信息
      */
     private void sendMessage(CrawInfo crawInfo, String fileName) {
         message.send(crawInfo.toString() + "\r\n", fileName);
