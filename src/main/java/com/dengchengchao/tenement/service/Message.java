@@ -7,5 +7,5 @@ package com.dengchengchao.tenement.service;
  */
 public interface Message {
 
-    boolean send(String message);
+    boolean send(String message,String fileName);
 }

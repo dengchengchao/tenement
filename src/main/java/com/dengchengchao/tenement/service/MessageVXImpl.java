@@ -19,7 +19,7 @@ import java.util.List;
 public class MessageVXImpl implements Message {
 
     @Override
-    public boolean send(String message) {
+    public boolean send(String message,String fileName) {
         return false;
     }
 

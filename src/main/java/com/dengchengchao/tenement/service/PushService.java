@@ -7,13 +7,11 @@ import com.dengchengchao.tenement.database.impl.CrawlerDouBan;
 import com.dengchengchao.tenement.database.impl.CrawlerDouBanAPI;
 import com.dengchengchao.tenement.database.impl.HistoricalDataFileImpl;
 import com.dengchengchao.tenement.domain.CrawInfo;
-import com.dengchengchao.tenement.utils.FileUtils;
-import com.dengchengchao.tenement.utils.LogUtils;
-import com.dengchengchao.tenement.utils.ProUtils;
-import com.dengchengchao.tenement.utils.WatiUtils;
+import com.dengchengchao.tenement.utils.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -44,7 +42,7 @@ public class PushService extends Thread {
     /**
      * 消息推送组件
      */
-    private Message message=new MessageHtmlFileImpl();
+    private Message message = new MessageHtmlFileImpl();
 
     static {
         FileUtils.makeDir(Save.DIR_NAME);
@@ -55,29 +53,39 @@ public class PushService extends Thread {
     public void run() {
         printHead();
         while (true) {
+            logger.info(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
 
-
-            List<String> urls = semicolonWordToList(ProUtils.get("douban.urls"));
+            /**
+             * 获取url列表
+             */
+            List<String> urls = StringUtils.semicolonWordToList(ProUtils.get("douban.urls"));
             LogUtils.infoList(logger, urls, "URLS INFO: ");
             List<CrawInfo> crawInfos = crawler.getInfo(urls);
 
 
-            List<String> keywords = semicolonWordToList(ProUtils.get("douban.keyword"));
-            LogUtils.infoList(logger, keywords, "KEYWORDS INFO: ");
-            logger.info(String.format("Crawl SIZE:%d",crawInfos.size()));
+            /**
+             * 获取关键词列表
+             */
+            List<List<String>> keywords = StringUtils.andSymbolWordToList(ProUtils.get("douban.keyword"));
+            LogUtils.infoListWithList(logger, keywords, "KEYWORDS INFO: ");
+            logger.info(String.format("Crawl SIZE:%d", crawInfos.size()));
+
             for (CrawInfo crawInfo : crawInfos) {
-                //符合制定规则的 && 以前没有推送过的
-                if (isValidCrawlerInfo(keywords, crawInfo.getTitle()) &&
-                        !sendForwardCrawler.contains(crawInfo.getTitle())) {
+                for (List<String> keywordList : keywords) {
+                    //符合制定规则的 && 以前没有推送过的
+                    if (isValidCrawlerInfo(keywordList, crawInfo.getTitle()) &&
+                            !sendForwardCrawler.contains(crawInfo.getTitle())) {
 
-                    sendForwardCrawler.add(crawInfo.getTitle());
-                    historicalData.setHistoricalData(crawInfo.getTitle());
+                        sendForwardCrawler.add(crawInfo.getTitle());
+                        historicalData.setHistoricalData(crawInfo.getTitle());
 
-                    sendMessage(crawInfo);
-                    logger.info(crawInfo.toString());
+                        sendMessage(crawInfo,keywordList.toString());
+                        logger.info(keywordList.toString()+":");
+                        logger.info(crawInfo.toString());
+                    }
                 }
             }
-            WatiUtils.wait(Integer.valueOf(ProUtils.get("crawler.interval"))*60);
+            WatiUtils.wait(Integer.valueOf(ProUtils.get("crawler.interval")) * 60);
         }
     }
 
@@ -94,24 +102,11 @@ public class PushService extends Thread {
     }
 
 
-
-    /**
-     * @param semicolonWord 以分号(不区分中英文)隔开的句子
-     * @return 以分号分割开的List
-     */
-    private List<String> semicolonWordToList(String semicolonWord) {
-        if (null != semicolonWord) {
-            semicolonWord = semicolonWord.replace("；", ";");
-            return Arrays.asList(semicolonWord.split(";"));
-        }
-        return null;
-    }
-
     /**
      * 保存信息
      */
-    private void sendMessage(CrawInfo crawInfo) {
-        message.send(crawInfo.toString()+"\r\n");
+    private void sendMessage(CrawInfo crawInfo, String fileName) {
+        message.send(crawInfo.toString() + "\r\n", fileName);
     }
 
 
@@ -131,4 +126,5 @@ public class PushService extends Thread {
         return true;
 
     }
+
 }

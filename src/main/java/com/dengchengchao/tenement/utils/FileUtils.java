@@ -54,6 +54,6 @@ public class FileUtils {
      */
     public static boolean makeDir(String filePath) {
         File file = new File(filePath);
-        return file.mkdirs();
+        return !file.exists() && file.mkdirs();
     }
 }
