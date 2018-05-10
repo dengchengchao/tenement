@@ -13,15 +13,12 @@ public class ProUtils {
 
     private static Properties proUtils =new Properties();
 
-    static {
+    public static String get(String key){
         try{
             proUtils.load(new InputStreamReader(ProUtils.class.getResourceAsStream("/application.properties"),"UTF-8")); //path+"application.properties"));
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    public static String get(String key){
         return proUtils.getProperty(key);
     }
 }

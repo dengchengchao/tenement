@@ -73,15 +73,17 @@ public class PushService extends Thread {
             /**
              * 启动爬虫
              */
-            List<CrawInfo> crawInfos = crawler.getInfo(urls);
             logger.info("Crawler Start.........");
+            List<CrawInfo> crawInfos = crawler.getInfo(urls);
             logger.info(String.format("Crawl SIZE:%d", crawInfos.size()));
+
 
             for (CrawInfo crawInfo : crawInfos) {
                 for (List<String> keywordList : keywords) {
                     //符合制定规则的 && 以前没有推送过的
                     if (isValidCrawlerInfo(keywordList, crawInfo.getTitle()) &&
                             !sendForwardCrawler.contains(crawInfo.getTitle())) {
+
 
                         //记录到已推送的消息订阅，过滤
                         sendForwardCrawler.add(crawInfo.getTitle());

@@ -10,10 +10,13 @@ import java.io.File;
  * @Description
  */
 public class Save {
+    public static final String SINGLE_DIR_NAME="tenement";
 
-    public  static final String DIR_NAME= ProUtils.get("writer.dirpath")+ File.separator+ "tenement";
+    public  static final String DIR_NAME= ProUtils.get("writer.dirpath")+ File.separator+ SINGLE_DIR_NAME;
 
     public  static final String DIR_NAME_HISTORY=DIR_NAME+File.separator+"history.txt";
 
-    public static final String SVAE_POSTFIX=".html";
+    public static final String SAVE_POSTFIX =".html";
+
+    public static final String INDEX_NAME="index.html";
 }
