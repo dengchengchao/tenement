@@ -78,18 +78,18 @@ public class PushService extends Thread {
             logger.info(String.format("Crawl SIZE:%d", crawInfos.size()));
 
 
-            for (CrawInfo crawInfo : crawInfos) {
-                for (List<String> keywordList : keywords) {
+            for (List<String> keywordList : keywords) {
+                for (CrawInfo crawInfo : crawInfos) {
                     //符合制定规则的 && 以前没有推送过的
                     if (isValidCrawlerInfo(keywordList, crawInfo.getTitle()) &&
                             !sendForwardCrawler.contains(crawInfo.getTitle())) {
 
 
-                        //记录到已推送的消息订阅，过滤
-                        sendForwardCrawler.add(crawInfo.getTitle());
+                        //记录到已推送的消息订阅，过滤 使用keywordlist+title作为关键词，使得同一条信息能添加到不同的关键词列表中
+                        sendForwardCrawler.add(crawInfo.getTitle()+keywordList.toString());
 
                         //保存历史记录文件
-                        historicalData.setHistoricalData(crawInfo.getTitle());
+                        historicalData.setHistoricalData(crawInfo.getTitle()+keywordList.toString());
 
                         //推送消息到本地
                         sendMessage(crawInfo,keywordList.toString());

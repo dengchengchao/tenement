@@ -29,7 +29,7 @@ public class MessageHtmlFileImpl implements Message {
         if (!FileUtils.exist(path)) {
             String addLine = String.format("<p><a href=\"%s\" target=\"_blank\">%s</a></p><br/>", Save.SINGLE_DIR_NAME + File.separator + data + File.separator + fileName + Save.SAVE_POSTFIX,
                     data + "/" + fileName);
-            updateIndex(FileUtils.toHtmlPath(writePath) + "/" + Save.INDEX_NAME, addLine);
+            updateIndex(FileUtils.toHtmlPath(writePath) + "/" + Save.INDEX_NAME, FileUtils.toHtmlPath(addLine));
         }
 
         FileUtils.writeHtmlFile(path, message);
@@ -49,7 +49,6 @@ public class MessageHtmlFileImpl implements Message {
             FileUtils.writeHtmlFile(indexPath, addLine);
         }
     }
-
 
 }
 
