@@ -17,8 +17,8 @@ tenement是一个用于爬取豆瓣租房信息，根据条件过滤相关信息
 
 	douban.pages     //每次爬取页数，豆瓣网页每页显示25条信息，可以根据需要配置一次请求的页数   
 
-	douban.urls      //需要爬取的豆瓣的url的group后缀。比如百度北京租房豆瓣小组。找到https://www.douban.com/group/beijingzufang 
-				     //那么group后缀就为beijingzufang,多个网页用分号隔开    
+	douban.urls      //需要爬取的豆瓣的url的group后缀。比如北京租房豆瓣小组url:https://www.douban.com/group/beijingzufang 
+					 //那么group后缀就为beijingzufang,多个网页用分号隔开    
 
 	douban.keyword   //需要获取的关键字，比如西小口，那么每个title中包含西小口的字段都会被保存。多个用分号隔开。
  				     //如果需要多个字段，比如A同学要看西二旗那一块的地段，可以设置为上地;西二旗
