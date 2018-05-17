@@ -82,7 +82,7 @@ public class PushService extends Thread {
                 for (CrawInfo crawInfo : crawInfos) {
                     //符合制定规则的 && 以前没有推送过的
                     if (isValidCrawlerInfo(keywordList, crawInfo.getTitle()) &&
-                            !sendForwardCrawler.contains(crawInfo.getTitle())) {
+                            !sendForwardCrawler.contains(crawInfo.getTitle()+keywordList.toString())) {
 
 
                         //记录到已推送的消息订阅，过滤 使用keywordlist+title作为关键词，使得同一条信息能添加到不同的关键词列表中
